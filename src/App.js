@@ -1,57 +1,46 @@
 import './App.css';
-import {useState, useEffect, useRef} from 'react';
-import {fabric} from 'fabric';
+import { useState, useEffect, useRef } from 'react';
+import { fabric } from 'fabric';
+import './Redify.js';
+
+const imageSource = 'testimg.jpeg';
 
 function App() {
   const [canvas, setCanvas] = useState('');
-  const [imgURL, setImgURL] = useState('');
 
   useEffect(() => {
     setCanvas(initCanvas());
+    fabric.initFilterBackend();
   }, []);
 
   const initCanvas = () => (
     new fabric.Canvas('canvas', {
-      height: 800,
-      width: 800,
+      height: 520,
+      width: 500,
       backgroundColor: 'pink'
     })
   );
 
-  const addRect = canvi => {
-    const rect = new fabric.Rect({
-      height: 280,
-      width: 200,
-      fill: 'yellow'
-    });
-    canvi.add(rect);
-    canvi.renderAll();
-  };
-
-  const addImg = (e, url, canvi) => {
-    e.preventDefault();
-    new fabric.Image.fromURL(url, img => {
-      img.scale(0.75);
+  const addImg = (canvi) => {
+    fabric.Image.fromURL(imageSource, img => {
+      img.filters.push(
+        new fabric.Image.filters.Redify(),
+        new fabric.Image.filters.Blur({ blur : 0.5 })
+      );
+      img.applyFilters();
+      // canvi.setActiveObject(img);      
       canvi.add(img);
       canvi.renderAll();
-      setImgURL('');
     });
   }
 
   return (
     <div>
-      <button onClick={() => addRect(canvas)}>Rectangle</button>
-      <form onSubmit={e => addImg(e, imgURL, canvas)}>
-        <div>
-          <input
-            type="text"
-            value={imgURL}
-            onChange={e => setImgURL(e.target.value)}
-          />
-          <button type="submit">Add Image</button>
-        </div>
-      </form>
-      <canvas id="canvas" width="300" height="300"/>
+      <button onClick={() => addImg(canvas)}>Add Filters</button>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <canvas id="canvas" width="300" height="300" />
+        <img src={imageSource} />
+      </div>
     </div>
   );
 }
