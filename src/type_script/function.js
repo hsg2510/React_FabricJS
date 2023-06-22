@@ -32,4 +32,22 @@ function 타입어썰션함수(x) {
         따라서 type narrowing은 typeof if문으로 하는것을 추천.
     */
 }
-console.log("123");
+var 함수변수 = function (a) {
+    return 10;
+};
+함수변수('hong');
+//이름없는 함수 만들기
+(function () {
+    return 10;
+});
+(function () { return 10; }); // 내용에 return 10을 하는 코드 한줄만 있으면 다음으로 대체 가능.
+var 회원정보 = {
+    name: 'kim',
+    plusOne: function (x) {
+        return x + 1;
+    },
+    changeName: function () {
+    }
+};
+회원정보.plusOne(10);
+회원정보.changeName();

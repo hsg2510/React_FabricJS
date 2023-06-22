@@ -38,3 +38,30 @@ var johnVar = {
 };
 var 널널 = null; // 변수가 텅 비었다.
 var 언디파인 = undefined; // 변수는 만들었지만 정의가 되지 않았다. 
+//const && readonly
+var 여친 = {
+    name: '엠버'
+};
+여친.name = '유라'; // const지만 안에 멤버변수는 변경 가능.
+var 여친2 = {
+    name: '엠버'
+};
+// 여친2.name = '유라' 에러남.
+/*Literl Types -> enum처럼 사용 가능.*/
+var 이름리터럴타입;
+// 이름리터럴타입 = "lee"; 오류
+/* Literal Types & Assertion */
+var 자료 = {
+    name: 'kim'
+};
+function 내함수(a) {
+}
+// 내함수(자료.name) 오류 남. 자료.name은 type은 string이기 때문.
+// as const의 의미 
+// 1. object의 멤버변수의 type을 value로 바꿔버림. name은 string type이 아니라, 'kim' type 인것임.
+// 2. object의 멤버변수들을 readonly로 바꿔버림.
+var 자료2 = {
+    name: 'kim'
+};
+내함수(자료2.name);
+// 자료2.name = 'hong'

@@ -39,4 +39,36 @@ function 타입어썰션함수(x: number|string) {
     */
 }
 
-console.log("123")
+//함수타입을 Type 변수로 만들기
+type 함수타입 = () => {}; // 기본
+type 함수타입2 = (a :string) => number;
+let 함수변수 :함수타입2 = function (a){
+    return 10;
+};
+함수변수('hong');
+
+//이름없는 함수 만들기
+() => {
+    return 10;
+}
+() => 10; // 내용에 return 10을 하는 코드 한줄만 있으면 다음으로 대체 가능.
+
+//멤버함수(메서드) & 멤버함수의 Type 지정.
+type MemberType = {
+    name : string,
+    plusOne : (x : number) => number,
+    changeName : () => void
+}
+let 회원정보 : MemberType = {
+    name :'kim',
+    plusOne(x){
+        return x + 1;
+    },
+    changeName : () => {
+        
+    }
+}
+회원정보.plusOne(10)
+회원정보.changeName()
+
+
