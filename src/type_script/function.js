@@ -1,3 +1,12 @@
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 function 함수1(x) {
     return x * 2;
 }
@@ -51,3 +60,22 @@ var 회원정보 = {
 };
 회원정보.plusOne(10);
 회원정보.changeName();
+//rest parameter에 type 지정 
+function restFunc() {
+    var rest = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        rest[_i] = arguments[_i];
+    }
+}
+restFunc(1, 2, 3, 4, 5);
+// ...의 다른용도
+var arr = [1, 2, 3];
+var arr2 = [4, 5];
+var arr3 = __spreadArray(__spreadArray([], arr, true), arr2, true); // arr3 = [1, 2, 3, 4, 5];
+// destructuring을 function의 parameter로 사용하기
+function destructuringParam(_a) {
+    var student = _a.student, age = _a.age;
+    console.log(student, age);
+}
+var objectVar = { student: true, age: 20 };
+destructuringParam(objectVar);

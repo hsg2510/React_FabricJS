@@ -65,3 +65,7 @@ var 자료2 = {
 };
 내함수(자료2.name);
 // 자료2.name = 'hong'
+// array, object의 property들을 쉽게 변수로 빼내오기. (destructuring)
+var _a = ['안녕', 100], 변수1 = _a[0], 변수2 = _a[1]; // 변수1 = '안녕', 변수2 = 100 이 들어감
+var _b = { student2: true, age: 20 }, student2 = _b.student2, age = _b.age; // student2 = true, age = 20 이 들어감
+// let { student2, age } = { student2 : true, age : 20 } // 변수명과 property명이 같으면 이렇게 생략 가능.
