@@ -41,6 +41,26 @@ function 타입어썰션함수(x) {
         따라서 type narrowing은 typeof if문으로 하는것을 추천.
     */
 }
+// && 연산자로 null, undefined narrowing
+function 함수네로잉(a) {
+    // a가 null or undefined 이면, if 조건문이 undefined or null로 바뀌면서 if문을 실행하지 않음.
+    if (a && typeof a === 'string') {
+        // a가 string type일때만 실행됨.
+    }
+}
+function 인네로잉(animal) {
+    // typeof는 primitive 타입밖에 사용 못함.
+    if ('swim' in animal) {
+    }
+}
+function 리터럴네로잉(x) {
+    // 멤버변수 명이 같기 때문에 in으로도 narrowing 못함.
+    // 부모 클래스가 없기 때문에 instanceof로도 narrowing 못함.
+    // Car.wheel의 타입은 '4개' 그 자체임. 이것을 literal type이라고 함.
+    if (x.wheel === '4개') {
+        // Car Type임.
+    }
+}
 var 함수변수 = function (a) {
     return 10;
 };
