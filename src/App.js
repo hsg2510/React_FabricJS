@@ -1,48 +1,18 @@
+import logo from './logo.svg';
 import './App.css';
-import { useState, useEffect, useRef } from 'react';
-import { fabric } from 'fabric';
-import './Redify.js';
-
-const imageSource = 'testimg.jpeg';
+import { useState } from 'react';
 
 function App() {
-  const [canvas, setCanvas] = useState('');
+    // setState로 인해 state가 변경되면 해당 state가 포함된 html은 다시 렌더링된다.
+    // 자주 변경될것 같은 html 부분은 state로 관리하자.
+    let [a, setState] = useState('남자 코트 추천');
 
-  useEffect(() => {
-    setCanvas(initCanvas());
-    fabric.initFilterBackend();
-  }, []);
 
-  const initCanvas = () => (
-    new fabric.Canvas('canvas', {
-      height: 520,
-      width: 500,
-      backgroundColor: 'pink'
-    })
-  );
-
-  const addImg = (canvi) => {
-    fabric.Image.fromURL(imageSource, img => {
-      img.filters.push(
-        new fabric.Image.filters.Redify(),
-        new fabric.Image.filters.Blur({ blur : 0.5 })
-      );
-      img.applyFilters();
-      // canvi.setActiveObject(img);      
-      canvi.add(img);
-      canvi.renderAll();
-    });
-  }
-
-  return (
-    <div>
-      <button onClick={() => addImg(canvas)}>Add Filters</button>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <canvas id="canvas" width="300" height="300" />
-        <img src={imageSource} />
-      </div>
-    </div>
-  );
+    return (
+        <div className='App'>
+            
+        </div>
+    );
 }
-  
+
 export default App;
