@@ -82,8 +82,10 @@
     const ThemeContext = createContext('초기값'); 
     
     만약 자식 component(Page)가 <ThemeContext.Provider>로 감싸지지 않았다면, 
-    <Page/>
-    Page component에서 const data = useContext(ThemeContext)를 사용하면, data = '초기값'이 된다.
+    <ThemeContext.Provider value={{isDark, setIsDark}}>로 초기값을 전달해 주지 않았기 때문에, 
+    Page component에서 const data = useContext(ThemeContext)를 사용할 때, 초기값이 필요하다.
+    그런 경우, const ThemeContext = createContext(null); 으로 할것이 아니라,
+    const ThemeContext = createContext(초기값); 으로 초기값을 전달해 줘야 한다.
 
     *단순히 Prop drilling을 피하기 위한 목적이라면 Component Composition을 사용하는 것을 먼저 고려해보자.*
  */
