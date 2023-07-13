@@ -167,6 +167,23 @@
     // createBoxStyle을 useCallback을 사용하게 바꿔 줌으로써, isDark가 변경될때는 createBoxStyle 함수(object)가 변경되지 않고, size가 변경될 때만 변경된다.
 */
 
+//////UseCallback & Ref///////
+// 자식 element를 참조할 때 보통 useRef를 사용한다. 하지만, 해당 element를 참조까지 하면서 해당 element가 mount, unMount 될 때 특정 code를 실행시키고 싶다면, 
+// useCallback을 useRef처럼 사용하면 된다.
+/*
+    function CallBackAndRef(props) {
+        const h1Ref = useCallback(node => {
+            // h1 element가 mount, unMount될때 실행하고 싶은 코드 작성.
+        }, []);
+
+        return (
+            <>
+                <h1 ref={h1Ref}>안녕, 리액트</h1>
+            </>
+        );
+    }
+*/
+
 //////UseReducer///////
 /*
     여러개의 하위값들을 포함하는 복잡한 state를 다뤄야 할 때, useState 대신 사용한다. reduce도 state 처럼 reduce의 state가 바뀔 때마다 re-rendering 된다.
